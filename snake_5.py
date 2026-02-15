@@ -69,7 +69,7 @@ while not quit_game:
         quit_game = True
 
     snake_x += snake_x_change
-    snake_y += snake_y_change
+    snake_ay += snake_y_change
 
     screen.fill(green)
 
@@ -85,6 +85,3 @@ time.sleep(3)
 
 pygame.quit()
 quit()
-
-
-
