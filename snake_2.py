@@ -1,5 +1,4 @@
 import pygame
-import time
 
 pygame.init() # initialises (starts) all pygame modules so they are ready
 
@@ -30,7 +29,7 @@ snake_y = 350
 
 pygame.draw.rect(screen, red, [snake_x, snake_y, 20, 20])
     # parametres: surface (i.e., screen), colour, xy coords (location), width  and height (i.e., 20 x 20)
-    
+
 pygame.display.update() # updates the display to include changes (rectangle)
 
 # Allows the game to run forever until the user closes the window themselves
