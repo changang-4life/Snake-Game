@@ -1,6 +1,6 @@
 import pygame
 import time
-
+import random
 pygame.init() # initialises (starts) all pygame modules so they are ready
 
 # creating the screen / surface:
@@ -46,6 +46,10 @@ snake_y = 350
 snake_x_change = 0
 snake_y_change = 0
 
+# random x coords for food:
+food_x = round(random.randrange(20, 1000 - 20)/20)* 20
+food_y = round(random.randrange(20, 720 - 20)/20)* 20
+
 while not quit_game:
     for event in pygame.event.get():
         # Gets a list of some possible events a user might do
@@ -68,19 +72,27 @@ while not quit_game:
     
     if snake_x >= 1000 or snake_x < 0 or snake_y >= 720 or snake_y < 0:
         quit_game = True
-
+    
     snake_x += snake_x_change
-    snake_ay += snake_y_change
+    snake_y += snake_y_change
 
     screen.fill(green)
 
     pygame.draw.rect(screen, red, [snake_x, snake_y, 20, 20])
         # parametres: surface (i.e., screen), colour, xy coords (location), width  and height (i.e., 20 x 20)
+
+    pygame.draw.circle(screen, yellow, [food_x, food_y], 10)
+
     pygame.display.update() # updates the display to include changes (rectangle)
+
+    if snake_x == food_x - 10 and snake_y == food_y - 10:
+        # random x coords for food:
+        food_x = round(random.randrange(20, 1000 - 20)/20)* 20
+        food_y = round(random.randrange(20, 720 - 20)/20)* 20
 
     clock.tick(10)
 
-message("You died!", black, white)
+message("You died!", black)
 pygame.display.update()
 time.sleep(3)
 
